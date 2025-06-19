@@ -49,8 +49,8 @@ if (gz-transport_FOUND)
 		SRCS
 			GZBridge.cpp
 			GZBridge.hpp
-			GZMixingInterfaceESC.cpp
-			GZMixingInterfaceESC.hpp
+			GZMixingInterfaceMotor.cpp
+			GZMixingInterfaceMotor.hpp
 			GZMixingInterfaceServo.cpp
 			GZMixingInterfaceServo.hpp
 			GZMixingInterfaceWheel.cpp
