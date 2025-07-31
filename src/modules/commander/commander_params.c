@@ -173,6 +173,8 @@ PARAM_DEFINE_INT32(COM_HOME_IN_AIR, 0);
  * A value of 2 allows either RC Transmitter or Joystick input. The first valid input is used, will fallback to other sources if the input stream becomes invalid.
  * A value of 3 allows either input from RC or joystick. The first available source is selected and used until reboot.
  * A value of 4 ignores any stick input.
+ * A value of 5 allows either RC Transmitter or Joystick input. But RC has priority and whenever avaiable is immedietely used.
+ * A value of 6 allows either RC Transmitter or Joystick input. But Joystick has priority and whenever avaiable is immedietely used.
  *
  * @group Commander
  * @min 0
@@ -182,6 +184,8 @@ PARAM_DEFINE_INT32(COM_HOME_IN_AIR, 0);
  * @value 2 RC and Joystick with fallback
  * @value 3 RC or Joystick keep first
  * @value 4 Stick input disabled
+ * @value 5 RC priority, Joystick fallback
+ * @value 6 Joystick priority, RC fallback
  */
 PARAM_DEFINE_INT32(COM_RC_IN_MODE, 3);
 
@@ -284,10 +288,10 @@ PARAM_DEFINE_INT32(COM_LOW_BAT_ACT, 0);
  *
  * Before entering failsafe (RTL, Land, Hold), wait COM_FAIL_ACT_T seconds in Hold mode
  * for the user to realize.
- * During that time the user cannot take over control via the stick override feature (see COM_RC_OVERRIDE).
+ * During that time the user can switch modes, but cannot take over control via the stick override feature (see COM_RC_OVERRIDE).
  * Afterwards the configured failsafe action is triggered and the user may use stick override.
  *
- * A zero value disables the delay and the user cannot take over via stick movements (switching modes is still allowed).
+ * A zero value disables the delay.
  *
  * @group Commander
  * @unit s
@@ -735,6 +739,8 @@ PARAM_DEFINE_INT32(COM_MOT_TEST_EN, 1);
 /**
  * Timeout value for disarming when kill switch is engaged
  *
+ * Use RC_MAP_KILL_SW to map a kill switch.
+ *
  * @group Commander
  * @unit s
  * @min 0.0
@@ -1031,7 +1037,7 @@ PARAM_DEFINE_FLOAT(COM_THROW_SPEED, 5);
  * @value 3 Return
  * @increment 1
  */
-PARAM_DEFINE_INT32(COM_FLTT_LOW_ACT, 3);
+PARAM_DEFINE_INT32(COM_FLTT_LOW_ACT, 0);
 
 /**
  * Allow external mode registration while armed.
