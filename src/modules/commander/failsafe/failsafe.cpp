@@ -488,7 +488,7 @@ void Failsafe::checkStateAndMode(const hrt_abstime &time_us, const State &state,
 		 state.user_intended_mode == vehicle_status_s::NAVIGATION_STATE_EXTERNAL13 ||
 		 state.user_intended_mode == vehicle_status_s::NAVIGATION_STATE_EXTERNAL14 ||
 		 state.user_intended_mode == vehicle_status_s::NAVIGATION_STATE_EXTERNAL15 ||
-		 state.user_intended_mode == vehicle_status_s::NAVIGATION_STATE_EXTERNAL16 )
+		 state.user_intended_mode == vehicle_status_s::NAVIGATION_STATE_EXTERNAL16)
 		&& (_param_com_rcl_except.get() & (int)ManualControlLossExceptionBits::ExternalMode);
 
 	const bool rc_loss_ignored = rc_loss_ignored_mission || rc_loss_ignored_loiter || rc_loss_ignored_offboard ||
