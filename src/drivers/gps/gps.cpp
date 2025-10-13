@@ -736,14 +736,14 @@ GPS::run()
 		param_get(handle, &gps_ubx_dynmodel);
 	}
 
-	int32_t gps_ubx_min_cno = 6;
+	int32_t gps_ubx_min_cno = 0;
 	handle = param_find("GPS_UBX_MIN_CNO");
 	
 	if (handle != PARAM_INVALID) {
 		param_get(handle, &gps_ubx_min_cno);
 	}
 	
-	int32_t gps_ubx_min_elev = 10;
+	int32_t gps_ubx_min_elev = 0;
 	handle = param_find("GPS_UBX_MIN_ELEV");
 
 	if (handle != PARAM_INVALID) {
