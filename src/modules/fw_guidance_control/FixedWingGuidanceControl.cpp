@@ -781,24 +781,6 @@ FixedWingGuidanceControl::Run()
 				_position_setpoint_current_valid = valid_setpoint;
 			}
 
-		} else {
-			if (_pos_sp_triplet_sub.update(&_pos_sp_triplet)) {
-
-				_position_setpoint_previous_valid = PX4_ISFINITE(_pos_sp_triplet.previous.lat)
-								    && PX4_ISFINITE(_pos_sp_triplet.previous.lon)
-								    && PX4_ISFINITE(_pos_sp_triplet.previous.alt);
-
-				_position_setpoint_current_valid = PX4_ISFINITE(_pos_sp_triplet.current.lat)
-								   && PX4_ISFINITE(_pos_sp_triplet.current.lon)
-								   && PX4_ISFINITE(_pos_sp_triplet.current.alt);
-
-				_position_setpoint_next_valid = PX4_ISFINITE(_pos_sp_triplet.next.lat)
-								&& PX4_ISFINITE(_pos_sp_triplet.next.lon)
-								&& PX4_ISFINITE(_pos_sp_triplet.next.alt);
-
-				// reset the altitude foh (first order hold) logic
-				_min_current_sp_distance_xy = FLT_MAX;
-			}
 		}
 
 		airspeed_poll();

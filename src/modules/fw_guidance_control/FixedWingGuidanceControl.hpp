@@ -450,18 +450,6 @@ private:
 
 	/* automatic control methods */
 
-	/**
-	 * @brief Vehicle control for following a path.
-	 *
-	 * @param control_interval Time since last position control call [s]
-	 * @param curr_pos Current 2D local position vector of vehicle [m]
-	 * @param ground_speed Local 2D ground speed of vehicle [m/s]
-	 * @param pos_sp_prev previous position setpoint
-	 * @param pos_sp_curr current position setpoint
-	 */
-	void control_auto_path(const float control_interval, const Vector2d &curr_pos, const Vector2f &ground_speed,
-			       const position_setpoint_s &pos_sp_curr);
-
 	float get_manual_airspeed_setpoint();
 
 	void reset_takeoff_state();
